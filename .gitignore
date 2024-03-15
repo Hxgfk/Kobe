@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # eclipse
 bin
 *.launch
@@ -24,6 +25,8 @@ run
 # Files from Forge MDK
 forge*changelog.txt
 
+=======
+>>>>>>> 57688953ce51f6992fec47deab6eb4e8327c03da
 # Compiled class file
 *.class
 

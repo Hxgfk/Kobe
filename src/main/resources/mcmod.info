@@ -2,13 +2,13 @@
 {
   "modid": "kobe",
   "name": "Kobe Mod",
-  "description": "Add kobe to minecraft",
-  "version": "1.0.0",
+  "description": "Add Kobe to minecraft",
+  "version": "1.0",
   "mcversion": "1.12.2-14.23.5.2857",
   "url": "",
   "updateUrl": "",
   "authorList": ["Hxgfk"],
-  "credits": "",
+  "credits": "Some resources are sourced from the internet.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

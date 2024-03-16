@@ -1,0 +1,12 @@
+{
+  "kobe.record.music": {
+    "category": "record",
+    "subtitle" :"kobe.sound.music",
+    "sounds":[
+      {
+        "name": "kobe:record/see_you_again",
+        "stream":true
+      }
+    ]
+  }
+}

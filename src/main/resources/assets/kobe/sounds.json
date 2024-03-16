@@ -1,7 +1,7 @@
 {
-  "kobe.record.music": {
+  "record.see_you_again": {
     "category": "record",
-    "subtitle" :"kobe.sound.music",
+    "subtitle" :"kobe.record.see_you_again.play",
     "sounds":[
       {
         "name": "kobe:record/see_you_again",

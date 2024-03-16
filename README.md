@@ -7,7 +7,5 @@ This mod add Kobe to Minecraft.
 <br>When the player plays the song "See You Again" on a jukebox, there is a 24% chance that the Kobe will spawn.
 
 
-<br>The generation probability can be modified with the command `/kobe set_probability <probability: float>`.
+<br>The generation probability can be modified with the command `/kobe probability <probability: float>`.
 <br>The parameter `<probability: float>` must not exceed 1 or be less than 0.01.
-<br>Use command `/kobe reset_probability` can reset the probability.
-<br>You can use command `/summon kobe:entity_kobe` to spawn.

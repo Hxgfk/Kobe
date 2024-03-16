@@ -2,6 +2,7 @@ package hxgfk.kobe;
 
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -23,7 +24,7 @@ import java.util.Objects;
 @Mod(modid=Kobe.MODID, name = "Kobe Mod", version = "1.0")
 public class Kobe {
     public static final String MODID = "kobe";
-    public static final SoundEvent SEE_YOU_AGAIN_SOUND = new SoundEvent(new ResourceLocation(MODID, "see_you_again")).setRegistryName("kobe.record.see_you_again");
+    public static final SoundEvent SEE_YOU_AGAIN_SOUND = new SoundEvent(new ResourceLocation(MODID, "record.see_you_again")).setRegistryName("record.see_you_again");
     public static final ItemSeeYouAgainRecord INS_ITEM_RECORD = new ItemSeeYouAgainRecord();
     public static final ItemIceTea INS_ITEM_ICE_TEA = new ItemIceTea();
     public static final EntityEntry INS_KOBE_ENTITY = EntityEntryBuilder.create()
@@ -55,7 +56,7 @@ public class Kobe {
 
         @SubscribeEvent
         public static void registrySound(RegistryEvent.Register<SoundEvent> event) {
-            event.getRegistry().register(SEE_YOU_AGAIN_SOUND);
+            // event.getRegistry().register(SEE_YOU_AGAIN_SOUND);
         }
 
         @SubscribeEvent

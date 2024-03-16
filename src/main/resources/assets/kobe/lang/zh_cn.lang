@@ -1,5 +1,5 @@
 item.kobe.ice_tea.name=冰红茶
 item.kobe.record_see_you_again.name=音乐唱片
 item.record.see_you_again.desc=See You Again
-entity.kobe.entity_kobe=科比
+entity.kobe.entity_kobe.name=科比
 kobe.record.see_you_again.play=音乐唱片播放：See You Again

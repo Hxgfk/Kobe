@@ -1,6 +1,7 @@
 package hxgfk.kobe;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -8,12 +9,13 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class SeeYouAgainRecord extends ItemRecord {
-    public static final String ID = "record";
+public class ItemSeeYouAgainRecord extends ItemRecord {
+    public static final String ID = "record_see_you_again";
 
-    public SeeYouAgainRecord() {
+    public ItemSeeYouAgainRecord() {
         super(ID, Kobe.SEE_YOU_AGAIN_SOUND);
         this.setRegistryName(ID);
+        this.setCreativeTab(CreativeTabs.MISC);
     }
 
     @Override

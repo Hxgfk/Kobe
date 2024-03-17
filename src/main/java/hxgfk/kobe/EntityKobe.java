@@ -5,76 +5,57 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootTableList;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class EntityKobe extends EntityMob {
     public static final String entity_id = "entity_kobe";
+    private static final ResourceLocation LOOT_TABLE = LootTableList.register(new ResourceLocation(Kobe.MODID + ":kobe"));
 
     public EntityKobe(World world) {
         super(world);
         this.setSize(0.8F, 2.8F);
-        this.setHealth(50F);
+        this.setHealth(40F);
+        this.experienceValue = 10;
     }
 
     @Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIHurtByTarget(this, false));
-        this.tasks.addTask(1, new EntityAIAttackMelee(this, 0.96D, true));
+        this.tasks.addTask(1, new EntityAIAttackMelee(this, 0.8D, true));
         this.tasks.addTask(1, new EntityAIRestrictOpenDoor(this));
-        this.tasks.addTask(2, new EntityAINearestMonsterAttack(this, 15));
         this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, 0.65D));
-        this.tasks.addTask(3, new EntityAIWander(this, 0.6D));
         this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 4.5F, 5.0F));
         this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityLiving.class, 4F));
+        this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 0.53D));
+        this.tasks.addTask(7, new EntityAIWander(this, 0.45D));
     }
 
-    public static class EntityAINearestMonsterAttack extends EntityAIBase {
-        private final EntityCreature entity;
-        private final double attractRange;
-        private int maxTargets = 30;
-        private int attractedTargets = 0;
+    @Override
+    protected boolean canDropLoot() {
+        return true;
+    }
 
-        public EntityAINearestMonsterAttack(EntityCreature entity, double range) {
-            this.entity = entity;
-            this.attractRange = range;
-        }
+    @Nullable
+    @Override
+    public ResourceLocation getLootTable() {
+        return LOOT_TABLE;
+    }
 
-        @Override
-        public boolean shouldExecute() {
-            return true;
-        }
-
-        @Override
-        public void updateTask() {
-            List<EntityMob> nearbyMobs = this.entity.world.getEntitiesWithinAABB(EntityMob.class, this.entity.getEntityBoundingBox().grow(this.attractRange));
-
-            for (EntityMob mob : nearbyMobs) {
-                if (this.attractedTargets >= this.maxTargets) {
-                    break;
-                }
-
-                if (mob.getAttackTarget() == null) {
-                    mob.setAttackTarget(this.entity);
-                    this.attractedTargets++;
-                }
-            }
-        }
-
-        @Override
-        public void resetTask() {
-            this.attractedTargets = 0;
-        }
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0F);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
     }
 
     public static class model extends ModelPlayer {

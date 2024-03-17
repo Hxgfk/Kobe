@@ -24,11 +24,11 @@ jobs:
 
     - name: Grant execute permission for gradlew (Windows)
       run: |
-        Get-ChildItem -Path .\gradlew.bat | ForEach-Object { $_.IsReadOnly = $false }
+        Get-ChildItem -Path ./gradlew.bat | ForEach-Object { $_.IsReadOnly = $false }
         .\gradlew.bat tasks
 
     - name: Build with Gradle
-      run: .\gradlew.bat build
+      run: ./gradlew.bat build
 
     - name: Upload JAR artifact
       uses: actions/upload-artifact@v2

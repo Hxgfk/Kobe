@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
@@ -22,11 +22,13 @@ jobs:
       with:
         java-version: 1.8
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x ./gradlew
+    - name: Grant execute permission for gradlew (Windows)
+      run: |
+        Get-ChildItem -Path .\gradlew.bat | ForEach-Object { $_.IsReadOnly = $false }
+        .\gradlew.bat tasks
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: .\gradlew.bat build
 
     - name: Upload JAR artifact
       uses: actions/upload-artifact@v2

@@ -2,8 +2,8 @@ package hxgfk.kobe;
 
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -32,6 +32,7 @@ public class Kobe {
             .id(EntityKobe.entity_id, 0)
             .name(MODID+".entity_kobe")
             .tracker(80, 3, true)
+            .egg(0xF8C238, 0xD32AE2)
             .build();
 
     @Mod.EventHandler
@@ -56,7 +57,7 @@ public class Kobe {
 
         @SubscribeEvent
         public static void registrySound(RegistryEvent.Register<SoundEvent> event) {
-            // event.getRegistry().register(SEE_YOU_AGAIN_SOUND);
+            event.getRegistry().register(SEE_YOU_AGAIN_SOUND);
         }
 
         @SubscribeEvent
